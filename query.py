@@ -1,17 +1,17 @@
-from application import create_app
-from application.database import db, User
+from application import create_app, db
+from application.database.models import User
+from datetime import datetime
 
 app = create_app()
-
 with app.app_context():
-    db.create_all()  # Create tables
+    db.create_all()  # Ensure tables exist
 
-    # Sample users
-    user1 = User(name="Alice", email="alice@example.com")
-    user2 = User(name="Bob", email="bob@example.com")
+    if not User.query.first():  # Check if database is empty
+        user1 = User(username="Alice", email="alice@example.com", date_added=datetime.utcnow())
+        user2 = User(username="Bob", email="bob@example.com", date_added=datetime.utcnow())
 
-    db.session.add(user1)
-    db.session.add(user2)
-    db.session.commit()
-
-    print("Database populated!")
+        db.session.add_all([user1, user2])
+        db.session.commit()
+        print("✅ Users added successfully!")
+    else:
+        print("✅ Users already exist.")

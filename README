@@ -1,0 +1,43 @@
+# Flask Web App
+
+# Description
+A simple Flask web application that demonstrates routing, database integration with SQLAlchemy, and Blueprints.
+
+# Features
+- Homepage rendering
+- Database connection using SQLAlchemy
+- Flask Blueprints for modular design
+- Unit tests for application routes and models
+
+# Technologies Used
+- Flask
+- SQLAlchemy
+- Jinja2 Templates
+- Python
+- Pytest (for unit testing)
+
+# Project Structure
+flask-web-app/
+│─  application/
+│   ├── bp/
+│   │   ├── homepage/
+│   │   │   ├── routes.py
+│   ├── database/
+│   │   ├── models.py
+│   ├── templates/
+│   │   ├── index.html
+│   │   ├── homepage.html
+│── tests/
+│   ├── test_routes.py
+│   ├── test_models.py
+│── config.py
+│── requirements.txt
+│── wsgi.py
+
+# Installation & Setup
+1. **Clone the Repository**
+   ```sh
+   git clone https://github.com/EnghelRojas/flask-web-app.git
+   cd flask-web-app
+
+

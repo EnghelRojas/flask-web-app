@@ -1,12 +1,20 @@
 import pytest
-from application import create_app
+from application import create_app, db
 
 @pytest.fixture
 def app():
     app = create_app()
-    return app
 
-def test_homepage(app):
-    client = app.test_client()
-    response = client.get('/')
-    assert response.status_code == 200
+    # Ensure database is clean before testing
+    with app.app_context():
+        db.drop_all()  # Drop existing tables
+        db.create_all()  # Create new tables for tests
+
+    yield app
+
+    with app.app_context():
+        db.drop_all()  # Cleanup after tests
+
+@pytest.fixture
+def client(app):
+    return app.test_client()

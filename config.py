@@ -1,8 +1,11 @@
-import os
-
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-
 class Config:
-    SQLALCHEMY_DATABASE_URI = f"sqlite:///{os.path.join(BASE_DIR, 'database.db')}"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
+class DevelopmentConfig(Config):
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///dev.db'  # Database for development
+
+class TestingConfig(Config):
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///test.db'  # Separate database for testing
+
+class ProductionConfig(Config):
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///prod.db'  # Production database

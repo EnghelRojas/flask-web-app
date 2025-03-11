@@ -1,9 +1,5 @@
-from flask import Blueprint, render_template
-from application.database import User  # Import User model
+from flask import Blueprint
 
-homepage_bp = Blueprint("homepage", __name__)
+homepage_bp = Blueprint('homepage', __name__)
 
-@homepage_bp.route("/")
-def homepage():
-    users = User.query.all()  # Fetch users from the database
-    return render_template("users.html", users=users)  # Pass data to template
+from . import routes  # Import routes AFTER defining the Blueprint
