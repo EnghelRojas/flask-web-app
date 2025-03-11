@@ -77,3 +77,8 @@ https://github.com/EnghelRojas/flask-web-app
 Author
 
 Enghel Rojas
+
+Image output: 
+<img width="1456" alt="Screenshot 2025-03-11 at 3 01 18 PM" src="https://github.com/user-attachments/assets/95457929-9db7-4e33-bd9d-fe14bb6b7039" />
+
+
